@@ -18,7 +18,7 @@ var flash = require("connect-flash");
 // mongosh "mongodb+srv://cluster0.mn71b.mongodb.net/myFirstDatabase" --username admin
 
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.wlixq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://admin:admin@cluster0.wlixq.mongodb.net/final?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
@@ -68,3 +68,4 @@ app.use(commentRoutes);
 app.listen(port, function () {
     console.log("Yelp server is listening.....");
 });
+
