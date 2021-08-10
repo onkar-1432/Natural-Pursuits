@@ -18,7 +18,7 @@ var flash = require("connect-flash");
 // mongosh "mongodb+srv://cluster0.mn71b.mongodb.net/myFirstDatabase" --username admin
 
 
-mongoose.connect("mongodb+srv://taskapp:Onkar@143@cluster0.rouxn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://taskapp:Onkar@143@cluster0.rouxn.mongodb.net/task-manager-api?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
