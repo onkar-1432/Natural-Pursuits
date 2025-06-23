@@ -60,7 +60,7 @@ app.use(function (req, res, next) {
 });
 
 
-
+// main routes
 app.use(indexRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
