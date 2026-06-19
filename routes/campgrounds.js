@@ -7,10 +7,12 @@ var middleware=require("../middleware");
 
 //INDEX- show all campgrounds
 router.get("/campgrounds", function (req, res) {
-    //res.render("campgrounds",{campgrounds:campgrounds});
-
     Campground.find({}, function (err, allCampgrounds) {
-        res.render("campgrounds/index", { campgrounds: allCampgrounds , currentUser : req.user});
+        if (err) {
+            console.error("Campground.find error:", err);
+            return res.status(500).send("Database error while loading campgrounds.");
+        }
+        res.render("campgrounds/index", { campgrounds: allCampgrounds, currentUser: req.user });
     });
 });
 

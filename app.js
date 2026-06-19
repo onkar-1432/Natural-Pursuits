@@ -18,13 +18,16 @@ var flash = require("connect-flash");
 // mongosh "mongodb+srv://cluster0.mn71b.mongodb.net/myFirstDatabase" --username admin
 
 
-const databaseUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/natural_pursuits";
-if (!process.env.MONGODB_URI) {
-    console.warn("Warning: MONGODB_URI is not defined. Using local MongoDB fallback.");
+const databaseUrl = process.env.MONGODB_URI || process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/natural_pursuits";
+if (!process.env.MONGODB_URI && !process.env.DATABASE_URL) {
+    console.warn("Warning: No MongoDB URI found in env vars. Using local MongoDB fallback.");
+} else {
+    console.log("Using MongoDB URI from env:", process.env.MONGODB_URI ? "MONGODB_URI" : "DATABASE_URL");
 }
 mongoose.connect(databaseUrl, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000
 }).then(() => {
     console.log("connected to db");
 }).catch(err => {
